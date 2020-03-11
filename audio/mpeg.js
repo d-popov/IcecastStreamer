@@ -1,4 +1,4 @@
-var parser = require("mp3-parser");
+
 var fs = require('fs');
 var util = require('util');
 var lame = require('lame');
@@ -53,7 +53,7 @@ Mpeg.prototype.decodeBuffer = function(buffer, callback) {
 
 Mpeg.prototype.getAudioData = function(filePath, frames, startFrame, length) {
 	try{
-	logger.debug("getting audio data:", filePath, "frames:", frames, "startFrame:", startFrame, "Length:", length);
+	//logger.debug("getting audio data:", filePath, "frames:", frames, "startFrame:", startFrame, "Length:", length);
 	if (length <= 0) return new Buffer(0);
 	var byteStart = startFrame === 0 ? 0 : frames[startFrame].offset;
 	var lastFrame = frames[startFrame + length];
@@ -62,7 +62,7 @@ Mpeg.prototype.getAudioData = function(filePath, frames, startFrame, length) {
 	var fd = fs.openSync(filePath, "r");
 	var buffer = new Buffer(byteEnd - byteStart);
 	fs.readSync(fd, buffer, 0, buffer.length, byteStart);
-	fs.close(fd);
+	fs.closeSync(fd);
 
 	return buffer;
 }

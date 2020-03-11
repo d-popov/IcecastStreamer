@@ -18,8 +18,8 @@ var Player = function(streamer) {
 	this.playlistManager = new playlistManager();
 	this.playlistManager.on('stop', function() {
 		logger.debug('Audioplayer has been stopped');
-		self.stop();
-		//self.emit('stop');
+		//!self.stop();
+		//!self.emit('stop');
 	});
 	this.interval = setInterval(function() {
 		self.mainLoop();
@@ -140,7 +140,7 @@ Player.prototype.mainLoop = function() {
 		}
 
 		var diff = this.timeToData(Date.now() - this.startTime);
-		log.debug(util.format('Data sent %d, should be sent %d, diff %d', this.sentData, a, this.sentData - diff));
+		logger.debug(util.format('Data sent %d, should be sent %d, diff %d', this.sentData, diff, this.sentData - diff));
 		/*
 			Check if we are sending data too slow, if necessary ask AudioDeck to send more
 		*/
