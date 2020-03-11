@@ -1,4 +1,4 @@
-var logger = require('logger').Logger();
+var logger = require('../../logger');
 var stream = require('stream');
 var util = require('util');
 var config = require('../../config/config');

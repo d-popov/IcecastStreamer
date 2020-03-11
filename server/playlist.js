@@ -1,4 +1,4 @@
-var logger = require('logger').Logger();
+var logger = require('../logger');
 var config = require('../config/config');
 var fs = require('fs');
 var path = require('path');
@@ -29,7 +29,7 @@ var PlaylistManager = function() {
 	this.queue = [];
 	events.EventEmitter.call(this);
 	this.files = getAudioFiles('.mp3', 0, config.musicDir);
-	logger.debug(util.format('Found %s files in: %s', this.files.length, config.musicDir));
+	//!logger.debug(util.format('Found %s files in: %s', this.files.length, config.musicDir));
 	allFiles = this.files;
 	this.dirname = config.playstlistDir;
 	if (this.dirname.length < 1) {
@@ -46,12 +46,12 @@ var PlaylistManager = function() {
 	}
 	catch (err) {
 		console.log(err);
-		logger.info('Default playlist not found, creating...');
+		//!loggerlogger.info('Default playlist not found, creating...');
 		this.files.forEach(function(file) {
 			defaultPlaylist.paths.push(file.path);
 		});
 		defaultPlaylist.save(this.dirname);
-		logger.info('Default playlist created');
+		//!loggerlogger.info('Default playlist created');
 	}
 
 	defaultPlaylist.locked = true;
@@ -78,7 +78,7 @@ var PlaylistManager = function() {
 					}
 				}
 				catch (err) {
-					logger.error(util.format('Cannot load playlist from "%s"', filePath));
+					//!loggerlogger.error(util.format('Cannot load playlist from "%s"', filePath));
 				}
 			}
 		}
@@ -90,16 +90,16 @@ var PlaylistManager = function() {
 			commercialFrequency = config.commercial.frequency.split(':')[0];
 			commercialsInRow = config.commercial.frequency.split(':')[1];
 			if (commercialQueue.length > 0) {
-				logger.info(util.format('Found %s commercial(s)', commercialQueue.length));
+				//!loggerlogger.info(util.format('Found %s commercial(s)', commercialQueue.length));
 				commercialsEnabled = true;
 			}
 		}
 		catch (err) {
 			commercialsEnabled = false;
-			logger.error(util.format('Cannot enable commercials: %s', err));
+			//!loggerlogger.error(util.format('Cannot enable commercials: %s', err));
 		}
 	}
-	logger.info('Playlist manager started');
+	//!loggerlogger.info('Playlist manager started');
 };
 
 util.inherits(PlaylistManager, events.EventEmitter);
@@ -120,7 +120,7 @@ Playlist.prototype.save = function(dirname) {
 		autoShuffle: this.autoShuffle
 	};
 	fs.writeFile(path.join(dirname, this.name), JSON.stringify(playListObject), function(error) {
-		if (error) logger.error(error);
+		if (error) ;//!loggerlogger.error(error);
 	});
 };
 

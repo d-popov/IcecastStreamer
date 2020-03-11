@@ -1,11 +1,12 @@
 var log = require('log4js');
-var config = require('config/config');
+var config = require('./config/config');
 
-log.clearAppenders();
-log.loadAppender('file');
-log.addAppender(log.appenders.file('logs/app.log'), 'App');
+log.configure({
+    appenders: { applog: { type: 'file', filename: 'app.log' } },
+    categories: { default: { appenders: ['applog'], level: 'error' } }
+  });
 
 var logger = log.getLogger('App');
-logger.setLevel(config.debugLevel || 'INFO');
+logger.level = config.debugLevel || 'INFO';
 
 module.exports = logger;

@@ -1,4 +1,4 @@
-var logger = require('logger').Logger();
+var logger = require('../logger');
 var bufferedReader = require('./metadataReader');
 var metadata = require('ffmetadata');
 var util = require('util');

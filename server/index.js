@@ -1,4 +1,4 @@
-var logger = require('logger').Logger();
+var logger = require('../logger');
 var util = require('util');
 var Icecast = require('./icecast');
 
