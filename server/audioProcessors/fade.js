@@ -1,5 +1,5 @@
-var logger = require('logger');
-var stream = require('stream')
+var logger = require('logger').Logger();
+var stream = require('stream');
 var util = require('util');
 var config = require('../../config/config');
 var events = require("events");
@@ -10,7 +10,7 @@ var Fade = function(audioDeck) {
 	this.crossFadeDone = 0;
 	stream.Transform.call(this);
 	events.EventEmitter.call(this);
-}
+};
 
 util.inherits(Fade, stream.Transform);
 

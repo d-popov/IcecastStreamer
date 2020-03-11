@@ -1,7 +1,7 @@
-var logger = require('logger')
+var logger = require('logger').Logger();
 var config = require('../config/config');
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var router = require('./router');
 
 var start = function() {

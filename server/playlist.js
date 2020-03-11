@@ -1,4 +1,4 @@
-var logger = require('logger').createLogger();
+var logger = require('logger').Logger();
 var config = require('../config/config');
 var fs = require('fs');
 var path = require('path');
