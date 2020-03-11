@@ -29,7 +29,7 @@ var PlaylistManager = function() {
 	this.queue = [];
 	events.EventEmitter.call(this);
 	this.files = getAudioFiles('.mp3', 0, config.musicDir);
-	//!logger.debug(util.format('Found %s files in: %s', this.files.length, config.musicDir));
+	logger.debug(util.format('Found %s files in: %s', this.files.length, config.musicDir));
 	allFiles = this.files;
 	this.dirname = config.playstlistDir;
 	if (this.dirname.length < 1) {
@@ -46,12 +46,12 @@ var PlaylistManager = function() {
 	}
 	catch (err) {
 		console.log(err);
-		//!loggerlogger.info('Default playlist not found, creating...');
+		logger.info('Default playlist not found, creating...');
 		this.files.forEach(function(file) {
 			defaultPlaylist.paths.push(file.path);
 		});
 		defaultPlaylist.save(this.dirname);
-		//!loggerlogger.info('Default playlist created');
+		logger.info('Default playlist created');
 	}
 
 	defaultPlaylist.locked = true;
@@ -78,7 +78,7 @@ var PlaylistManager = function() {
 					}
 				}
 				catch (err) {
-					//!loggerlogger.error(util.format('Cannot load playlist from "%s"', filePath));
+					logger.error(util.format('Cannot load playlist from "%s"', filePath));
 				}
 			}
 		}
@@ -90,16 +90,16 @@ var PlaylistManager = function() {
 			commercialFrequency = config.commercial.frequency.split(':')[0];
 			commercialsInRow = config.commercial.frequency.split(':')[1];
 			if (commercialQueue.length > 0) {
-				//!loggerlogger.info(util.format('Found %s commercial(s)', commercialQueue.length));
+				logger.info(util.format('Found %s commercial(s)', commercialQueue.length));
 				commercialsEnabled = true;
 			}
 		}
 		catch (err) {
 			commercialsEnabled = false;
-			//!loggerlogger.error(util.format('Cannot enable commercials: %s', err));
+			logger.error(util.format('Cannot enable commercials: %s', err));
 		}
 	}
-	//!loggerlogger.info('Playlist manager started');
+	logger.info('Playlist manager started');
 };
 
 util.inherits(PlaylistManager, events.EventEmitter);
@@ -120,7 +120,7 @@ Playlist.prototype.save = function(dirname) {
 		autoShuffle: this.autoShuffle
 	};
 	fs.writeFile(path.join(dirname, this.name), JSON.stringify(playListObject), function(error) {
-		if (error) ;//!loggerlogger.error(error);
+		if (error) logger.error(error);
 	});
 };
 
@@ -212,7 +212,7 @@ PlaylistManager.prototype._nextSong = function() {
 	}
 	else {
 		if (antiloop) {
-			logger.debug('Can\'t find next song');
+			//logger.debug('Cant find next song');
 			this.emit('stop');
 			return;
 		}

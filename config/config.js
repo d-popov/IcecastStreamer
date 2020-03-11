@@ -1,14 +1,14 @@
 var config = {};
 
-config.musicDir = ['/mnt/nas4T/DOBY/MUSIC/CD/Rock'];
+config.musicDir = ['/mnt/nas4T/DOBY/MUSIC/CD'];
 // Seconds to crossfade tracks, set 0 to disable
 config.crossfade = 5;
 // If not provided, directory where run script located is used
 config.playstlistDir = '';
 
 config.commercial = {};
-config.commercial.enable = true;
-config.commercial.dir = ['/mnt/nas4T/DOBY/MUSIC/BG/Ivana'];
+config.commercial.enable = false;
+config.commercial.dir = ''; ['/mnt/nas4T/DOBY/MUSIC/BG/Ivana'];
 // If set true commecrials are also crossfaded
 config.commercial.crossfade = false;
 /*

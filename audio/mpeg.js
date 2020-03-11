@@ -52,6 +52,8 @@ Mpeg.prototype.decodeBuffer = function(buffer, callback) {
 };
 
 Mpeg.prototype.getAudioData = function(filePath, frames, startFrame, length) {
+	try{
+	logger.debug("getting audio data:", filePath, "frames:", frames, "startFrame:", startFrame, "Length:", length);
 	if (length <= 0) return new Buffer(0);
 	var byteStart = startFrame === 0 ? 0 : frames[startFrame].offset;
 	var lastFrame = frames[startFrame + length];
@@ -63,6 +65,12 @@ Mpeg.prototype.getAudioData = function(filePath, frames, startFrame, length) {
 	fs.close(fd);
 
 	return buffer;
+}
+	catch(e){
+		logger.error(e);
+		return new Buffer(0);
+
+	}
 };
 
 Mpeg.prototype.getFrames = function(filePath) {

@@ -19,7 +19,7 @@ var Player = function(streamer) {
 	this.playlistManager.on('stop', function() {
 		logger.debug('Audioplayer has been stopped');
 		self.stop();
-		self.emit('stop');
+		//self.emit('stop');
 	});
 	this.interval = setInterval(function() {
 		self.mainLoop();
