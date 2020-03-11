@@ -1,5 +1,5 @@
 var express = require('express');
-var server = require('server/index.js');
+var server = require('../../server/index.js');
 
 var playlistRouter = express.Router({mergeParams: true});
 

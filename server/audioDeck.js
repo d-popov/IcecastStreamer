@@ -1,8 +1,8 @@
 var logger = require('logger');
-var config = require('config/config');
+var config = require('../config/config');
 var util = require('util');
 var events = require('events');
-var Resampler = require('node_resampler');
+//var Resampler = require('node_resampler');
 var fade = require('./audioProcessors/fade');
 
 var deckState = {
@@ -22,11 +22,11 @@ var AudioDeck = function(streamer) {
 	this.sampleRate = 44100;
 	this.outBuffer = new Buffer(0);
 
-	this.resampler = new Resampler({
-		sourceRate: this.sampleRate,
-		targetRate: config.audio.outSampleRate,
-		stereo : true
-	});
+	// this.resampler = new Resampler({
+	// 	sourceRate: this.sampleRate,
+	// 	targetRate: config.audio.outSampleRate,
+	// 	stereo : true
+	// });
 
 	var decoder = this.streamer.getDecoderInstance();
 	this.processors.push(decoder);
@@ -41,7 +41,7 @@ var AudioDeck = function(streamer) {
 		}
 	});
 	this.processors.push(fader);
-	this.processors.push(this.resampler);
+	//this.processors.push(this.resampler);
 	this.on('songStart', function() {
 		fader.reset();
 	});
@@ -86,11 +86,11 @@ AudioDeck.prototype.play = function(song, fadeIn) {
 	this.frames = this.streamer.getFrames(this.song.path);
 	var newSampleRate = this.frames[0].sampleRate;
 	if (newSampleRate !== this.sampleRate) {
-		this.resampler.configure({
-			sourceRate: newSampleRate,
-			targetRate: config.audio.outSampleRate,
-			stereo : true
-		});
+		// this.resampler.configure({
+		// 	sourceRate: newSampleRate,
+		// 	targetRate: config.audio.outSampleRate,
+		// 	stereo : true
+		// });
 		this.sampleRate = newSampleRate;
 		logger.debug(util.format('new sampleRate: %d', this.sampleRate));
 	}

@@ -1,9 +1,9 @@
 var logger = require('logger');
-var config = require('config/config');
+var config = require('../config/config');
 var util = require('util');
 var net = require('net');
 var http = require('http');
-var player = require('server/audioPlayer');
+var player = require('../server/audioPlayer');
 var parseString = require('xml2js').parseString;
 
 var Icecast = function() {
@@ -15,7 +15,7 @@ var Icecast = function() {
 
 	if (type == 'mp3') {
 		this.type = 'audio/mpeg';
-		var stream = require('audio/mpeg');
+		var stream = require('../audio/mpeg');
 		this.streamer = new stream();
 	}
 	else {

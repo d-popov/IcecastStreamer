@@ -1,5 +1,5 @@
 var logger = require('logger')
-var config = require('config/config');
+var config = require('../config/config');
 var express = require('express');
 var bodyParser = require('body-parser')
 var router = require('./router');

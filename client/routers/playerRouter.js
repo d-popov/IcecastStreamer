@@ -1,5 +1,5 @@
 var express = require('express');
-var server = require('server/index.js');
+var server = require('../../server/index.js');
 
 
 var playerRouter = express.Router({mergeParams: true});

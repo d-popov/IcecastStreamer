@@ -1,6 +1,6 @@
 var config = {};
 
-config.musicDir = ['/home/user/Music'];
+config.musicDir = ['/mnt/nas4T/DOBY/MUSIC/CD/Rock'];
 // Seconds to crossfade tracks, set 0 to disable
 config.crossfade = 5;
 // If not provided, directory where run script located is used
@@ -8,7 +8,7 @@ config.playstlistDir = '';
 
 config.commercial = {};
 config.commercial.enable = true;
-config.commercial.dir = ['/home/user/Commercial'];
+config.commercial.dir = ['/mnt/nas4T/DOBY/MUSIC/BG/Ivana'];
 // If set true commecrials are also crossfaded
 config.commercial.crossfade = false;
 /*
@@ -20,8 +20,8 @@ config.commercial.frequency = '1:1';
 config.icecast = {};
 config.icecast.host = 'localhost';
 config.icecast.port = '8000';
-config.icecast.name = '/stream';
-config.icecast.password = 'hackme';
+config.icecast.name = '/test.mp3';//stream
+config.icecast.password = '8uR2S8!X';//hackme
 config.icecast.encoder = 'mp3';
 config.icecast.description = '';
 

@@ -1,5 +1,5 @@
-var logger = require('logger');
-var config = require('config/config');
+var logger = require('logger').createLogger();
+var config = require('../config/config');
 var fs = require('fs');
 var path = require('path');
 var audioFile = require('./audioFile');

@@ -1,7 +1,7 @@
 var logger = require('logger');
 var stream = require('stream')
 var util = require('util');
-var config = require('config/config');
+var config = require('../../config/config');
 var events = require("events");
 
 var Fade = function(audioDeck) {

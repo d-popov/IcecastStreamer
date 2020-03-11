@@ -1,5 +1,5 @@
 var logger = require('logger');
-var config = require('config/config');
+var config = require('../config/config');
 var util = require('util');
 var events = require('events');
 var playlistManager = require('./playlist');

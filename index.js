@@ -1,5 +1,5 @@
-var server = require('server/index.js');
-var client = require('client/index.js');
+var server = require('./server/index.js');
+var client = require('./client/index.js');
 
 server.start();
 
